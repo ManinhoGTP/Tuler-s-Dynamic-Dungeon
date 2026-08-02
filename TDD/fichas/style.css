@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     background-color: rgb(145, 5, 5);
-    max-height: 100px;
+    max-height: 500px;
     border-radius: 10px;
 }
 .navBar-option{
@@ -29,84 +29,136 @@
     border-style: solid;
     border-color: black;
 }
+header{
+    display: flex;
+    flex-direction: column;
+}
+#header-p{
+    display: flex;
+}
+#header-h1{
+    display: flex;
+}
+
+
 
 /*Display de fichas*/
-.card-ficha{
+.ficha{
     display: flex;
     border-style: solid;
     background-color: white;
-    min-width: 250px;
-    min-height: 100px;
+    text-align: center;
+    width: fit-content;
 }
-.textos{
-    display: flex;
-    flex-direction: row;
+.ficha:hover{
+    cursor: pointer;
+    transition-duration: 0.2s;
+    scale: 1.1;
+}
 
-    p{
-        margin: 10px;
-    }
-    #ficha-hp{
-        width: 80px;
-        background-color: rgb(255, 0, 0);
-        border-style: solid;
-        border-color: black;
+.ficha-texto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    P{
+        margin-left: 20px;
+        margin-right: 20px;
+        font-size: 20px;
     }
 }
-.barras{
+.ficha-barra{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    margin: 10px;
+    width: 300px;
+}
+.ficha-barra-texto{
+    font-weight: 600;
     
-    p{
-        margin: 10px;
+}
+.ficha-status{
+    display: flex;
+    flex-direction: column;
+}
+.progresso {
+    height: 20px;
+    border: 1px solid #000;
+    text-align: center;
+    height: 20px;
+    padding-top: 5px;
+    border-radius: 10px;
+
+    background: linear-gradient(
+        to right,
+        var(--color) var(--fill),
+        #ddd var(--fill)
+    );
+}
+
+/* Ficha grande */
+.fichaGrande{
+    display: flex;
+    flex-direction: row;
+}
+.fichaGrande-texto{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin-bottom: 50px;
+    
+    h1{
+        margin-right: 40px;
     }
-    #ficha-hp{
-        width: 100px;
-        background-color: rgb(255, 0, 0);
-        border-style: solid;
-        border-color: black;
-    }
-    #ficha-sanidade{
-        width: 100px;
-        background-color: rgb(141, 0, 110);
-        border-style: solid;
-        border-color: black;
-    }
-    #ficha-iniciativa{
-        width: 100px;
-        background-color: rgb(255, 255, 0);
-        border-style: solid;
-        border-color: black;
-    }
-    #ficha-sorte{
-        width: 100px;
-        background-color: rgb(0, 255, 0);
-        border-style: solid;
-        border-color: black;
-    }
+}
+.fichaGrande-status{
+    display: flex;
+    flex-direction: column;
+    
+}
+.fichaGrande-barra{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    
+}
+.fichaGrande-img{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+#fichaGrande-foto{
+    width: 250px;
+    height: 250px;
+}
+#fichaGrande-atributos{
+    width: 250px;
+    height: 250px;
+}
 
 
+
+/* Área de fichas */
+#div-fichas{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 }
-#imagem{
-    max-width: 25px;
-    max-height: 25px;
-    border-style: solid;
-    margin-top: 10px;
-    margin-right: 10px;
-}
+
 
 /*display section*/
 .tela{
     display: none;
 }
-.subtela{
-    display: none;
-}
 .ativa{
-    display: flex;
+    display: block;
 }
 
 /* Cor de back */
 body{
     background-color: rgb(255, 222, 179);
 }
+

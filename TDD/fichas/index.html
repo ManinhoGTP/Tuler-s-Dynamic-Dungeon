@@ -8,35 +8,40 @@
 </head>
 <body>
         <header id="navBar">
-            <img src="Imagens/D&D-logo.webp" alt="" id="navBar-img">
-            <p class="navBar-option" onclick="mostrarTela('fichas')">Fichas</p>
-            <p class="navBar-option" onclick="mostrarTela('monstros')">Montros</p>
-            <p class="navBar-option" onclick="mostrarTela('anotacoes')">Anotações</p>
+            <div id="header-h1">
+                <img src="Imagens/D&D-logo.webp" alt="" id="navBar-img">
+                <h1>Tuler's Dynamic Dungeos</h1>
+            </div>
+            <div id="header-p">
+                <p class="navBar-option" onclick="mostrarTela('section-fichas')">Fichas</p>
+                <p class="navBar-option" onclick="mostrarTela('section-monstros')">Montros</p>
+                <p class="navBar-option" onclick="mostrarTela('section-anotacoes')">Anotações</p>
+            </div>
         </header>
 
 
+        
         <!-- Fichas -->
-        <section id="fichas", class="tela ativa">
-            <button ondblclick="CriarNovaFicha()">Nova ficha</button>
+        <section id="section-fichas", class="tela ativa">
 
-            <div id="listaDeFichas"></div>
+            <button onclick="CriarNovaFicha()">Nova ficha</button>
 
-            <section id="ficha" class="subtela">
-                
+            <div id="div-fichas">
+            </div>
 
-
-            </section>
         </section>
 
-        <!-- <img src="Imagens/MP-icon.png" id="imagem"> -->
+        <div id="fichaAtual">
+        </div>
+
         <!-- Montros -->
-        <section id="monstros", class="tela"> 
+        <section id="section-monstros", class="tela"> 
             <p>section2</p>
         </section>
 
 
         <!-- Anotações -->
-        <section id="anotacoes", class="tela">
+        <section id="section-anotacoes", class="tela">
             <p>section3</p>
         </section>
 

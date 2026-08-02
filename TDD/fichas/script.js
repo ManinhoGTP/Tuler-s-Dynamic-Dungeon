@@ -1,98 +1,136 @@
+        /* Área de fichas */
+
 let fichas = [
-    {
-        nome: "Tuler",
-        idade: 20,
-        hpMax: 15,
-        sanidadeMax: 100,
-        iniciativaMax: 5,
-        sorteMax: 3
-    },
-    {
-        nome: "Baros",
-        idade: 35,
-        hpMax: 20,
-        sanidadeMax: 100,
-        iniciativaMax: 5,
-        sorteMax: 3
-    }
 ]
+let id = 0
+
 mostrarFichas()
+
 //Criar nova ficha
 function CriarNovaFicha(){
 
-   let hpMax = prompt("Hp do personagem:")
-   let sanidadeMax = prompt("Sanidade do personagem:")
-
-
-
-
+    let hpMax = prompt("Hp")
+    let sanidadeMax = prompt("Sanidade:")
+    let iniciativaMax = prompt("Iniciativa:")
+    let sorteMax = prompt("Sorte:")
 
     novaFicha = {
         nome: "teste",
         idade: 20,
-        hpMax: 20,
+        especialidade: "TDAH",
+        etnia: "macaco",
+        hpMax: hpMax,
         hp: hpMax,
-        sanidadeMax: 100,
+        sanidadeMax: sanidadeMax,
         sanidade: sanidadeMax,
-        iniciativaMax: 5,
+        iniciativaMax: iniciativaMax,
         iniciativa: iniciativaMax,
-        sorteMax: 3,
+        sorteMax: sorteMax,
         sorte: sorteMax,
         força: 5,
         inteligencia: 7,
         dextreza: 5,
         ResistenciaMental: 15,
         percepcao: 7,
-        rituais: 0
+        rituais: 0,
+        id: id
     }
-
-    // mostrarSubTela("ficha")
+    id++
+    fichas.push(novaFicha)
+    console.log(fichas)
+    mostrarFichas()
 }
 
-function mostrarFichas(){
-    let listaDeFichas = document.getElementById("listaDeFichas")
-    listaDeFichas.innerHTML = ""
 
-    for(let i = 0; i < fichas.length; i++){
-        listaDeFichas.innerHTML += `
-        <div class="card-ficha">
-            <div class="status">
-                <div class="textos">
-                    <p>Nome: ${fichas[i].nome}</p>
-                    <p>Idade :${fichas[i].idade}</p>
+//mostrar fichas
+function mostrarFichas(){
+
+        const container = document.getElementById("div-fichas");
+        container.innerHTML = ""
+
+
+        fichas.forEach(ficha => {
+            const card = document.createElement("div");
+            card.className = "ficha";
+
+
+            card.innerHTML = `
+                <div class="ficha-status" onclick="mostrarTela('section-ficha${ficha.id}')">
+                    <div class="ficha-texto">
+                        <p>Nome: ${ficha.nome}</p>
+                        <p>Idade: ${ficha.idade}</p>
+                    </div>
+                    <div class="ficha-barra">
+                        ${criarBarra("HP", ficha.hp, ficha.hpMax, "red")}
+                        ${criarBarra("Sanidade", ficha.sanidade, ficha.sanidadeMax, "purple")}
+                        ${criarBarra("Iniciativa", ficha.iniciativa, ficha.iniciativaMax, "gold")}
+                        ${criarBarra("Sorte", ficha.sorte, ficha.sorteMax, "green")}
+                    </div>
                 </div>
-                <div class="barras">
-                    <p id="ficha-hp">HP: ${fichas[i].hpMax}</p>
-                    <p id="ficha-sanidade">Sandidade: ${fichas[i].sanidadeMax}</p>
-                    <p id="ficha-iniciativa">Iniciativa: ${fichas[i].iniciativaMax}</p>
-                    <p id="ficha-sorte">Sorte: ${fichas[i].sorteMax}</p>
+            `;
+
+            container.appendChild(card);
+
+
+        }); 
+        
+        //section
+        const containerFicha = document.getElementById("fichaAtual");
+        containerFicha.innerHTML = ""
+
+
+        fichas.forEach(ficha => {
+            const teste = document.createElement("section");
+            teste.className = "tela";
+            teste.id = `section-ficha${ficha.id}`
+
+
+            teste.innerHTML = `
+            <div class="fichaGrande">
+                <div class="fichaGrande-status">
+                    <div class="fichaGrande-texto">
+                        <h1>Nome: ${ficha.nome}</h1>
+                        <h1>Idade: ${ficha.idade}</h1>
+                        <h1>Espacialidade: ${ficha.especialidade}</h1>
+                        <h1>Etnia: ${ficha.etnia}</h1>
+                    </div>
+                    <div class="fichaGrande-barra">
+                        ${criarBarra("HP", ficha.hp, ficha.hpMax, "red")}
+                        ${criarBarra("Sanidade", ficha.sanidade, ficha.sanidadeMax, "purple")}
+                        ${criarBarra("Iniciativa", ficha.iniciativa, ficha.iniciativaMax, "gold")}
+                        ${criarBarra("Sorte", ficha.sorte, ficha.sorteMax, "lightgreen")}
+                    </div>
+                </div>
+                <div class="fichaGrande-img">
+                    <img src="Imagens/D&D-logo.webp" id="fichaGrande-foto">
+                    <img src="Imagens/atributos-icon.png" id="fichaGrande-atributos">
                 </div>
             </div>
-            <div class="imagens"
-                <div class="ficha-imagem">
-                    <img src="Imagens/MP-icon.png" id="imagem">
-                </div>
+            `;
+
+            containerFicha.appendChild(teste);
+        });
+
+}
+function criarBarra(nome, atual, max, cor) {
+    const porcentagem = (atual / max) * 100;
+
+    return `
+        <div class="barra">
+            
+            <div class="progresso"
+                style="
+                    --fill:${porcentagem}%;
+                    --color:${cor};
+                "><span class="ficha-barra-texto">${nome}: ${atual}/${max}</span>
             </div>
         </div>
-        `
-    }
-
+    `;
 }
-
-
-
-
 
 //Mudar section
 function mostrarTela(sectionId){
     let section = document.querySelectorAll(".tela")
-    section.forEach(function (section){
-        section.classList.remove("ativa")
-        document.getElementById(sectionId).classList.add("ativa")
-    })
-}
-function mostrarSubTela(sectionId){
-    let section = document.querySelectorAll(".subtela")
     section.forEach(function (section){
         section.classList.remove("ativa")
         document.getElementById(sectionId).classList.add("ativa")
