@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <header id="navBar">
+            <img src="Imagens/D&D-logo.webp" alt="" id="navBar-img">
+            <p class="navBar-option" onclick="mostrarTela('fichas')">Fichas</p>
+            <p class="navBar-option" onclick="mostrarTela('monstros')">Montros</p>
+            <p class="navBar-option" onclick="mostrarTela('anotacoes')">Anotações</p>
+        </header>
+
+
+        <!-- Fichas -->
+        <section id="fichas", class="tela ativa">
+            <button ondblclick="CriarNovaFicha()">Nova ficha</button>
+
+            <div id="listaDeFichas"></div>
+
+            <section id="ficha" class="subtela">
+                
+
+
+            </section>
+        </section>
+
+        <!-- <img src="Imagens/MP-icon.png" id="imagem"> -->
+        <!-- Montros -->
+        <section id="monstros", class="tela"> 
+            <p>section2</p>
+        </section>
+
+
+        <!-- Anotações -->
+        <section id="anotacoes", class="tela">
+            <p>section3</p>
+        </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

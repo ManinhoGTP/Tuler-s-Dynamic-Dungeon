@@ -1,0 +1,112 @@
+/* Barra de navegação */
+#navBar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(145, 5, 5);
+    max-height: 100px;
+    border-radius: 10px;
+}
+.navBar-option{
+    font-weight: 900;
+    font-size: 27.5px;
+    margin: 10px;
+    margin-left: 110px;
+    margin-right: 110px;
+    text-decoration: underline;
+    text-decoration-color: rgb(255, 255, 255);
+    color: rgb(255, 197, 122);
+}
+.navBar-option:hover{
+    cursor: pointer;
+    transition-duration: 0.2s;
+    scale: 1.2;
+}
+#navBar-img{
+    max-height:80px;
+    max-width: 80px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+}
+
+/*Display de fichas*/
+.card-ficha{
+    display: flex;
+    border-style: solid;
+    background-color: white;
+    min-width: 250px;
+    min-height: 100px;
+}
+.textos{
+    display: flex;
+    flex-direction: row;
+
+    p{
+        margin: 10px;
+    }
+    #ficha-hp{
+        width: 80px;
+        background-color: rgb(255, 0, 0);
+        border-style: solid;
+        border-color: black;
+    }
+}
+.barras{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    
+    p{
+        margin: 10px;
+    }
+    #ficha-hp{
+        width: 100px;
+        background-color: rgb(255, 0, 0);
+        border-style: solid;
+        border-color: black;
+    }
+    #ficha-sanidade{
+        width: 100px;
+        background-color: rgb(141, 0, 110);
+        border-style: solid;
+        border-color: black;
+    }
+    #ficha-iniciativa{
+        width: 100px;
+        background-color: rgb(255, 255, 0);
+        border-style: solid;
+        border-color: black;
+    }
+    #ficha-sorte{
+        width: 100px;
+        background-color: rgb(0, 255, 0);
+        border-style: solid;
+        border-color: black;
+    }
+
+
+}
+#imagem{
+    max-width: 25px;
+    max-height: 25px;
+    border-style: solid;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+/*display section*/
+.tela{
+    display: none;
+}
+.subtela{
+    display: none;
+}
+.ativa{
+    display: flex;
+}
+
+/* Cor de back */
+body{
+    background-color: rgb(255, 222, 179);
+}
