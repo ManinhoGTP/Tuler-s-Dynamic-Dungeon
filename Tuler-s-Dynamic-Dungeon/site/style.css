@@ -1,0 +1,68 @@
+/* TOPO DA PÁGINA */
+
+    /* Div total do topo da página */
+    #header{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        background-color: #151515;
+        border: 0px;
+        border-bottom: 5px;
+        border-color: #8b0000;
+        border-style: solid;
+    }
+
+    /* Div com os botões principais */
+    #header-btns{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 35%;
+        margin-left: auto;
+
+        /* Botões principais */
+        p{
+            font-weight: bolder;
+            font-size: xx-large;
+            color: white;
+            margin-left: 40px;
+            margin-right: 40px;
+            /* text-decoration: underline; */
+        }
+        p:hover{
+            cursor: pointer;
+            transition: 0.2s;
+            scale: 1.2;
+        }
+    }
+
+    /* Logo principal do site */
+    #logo{
+        margin: 7.5px;
+
+        max-width: 125px;
+        max-height: 125px;
+        border-radius: 15px;
+    }
+/* TOPO DA PÁGINA */
+
+/* CONTEÚDO PRINCIPAL */
+
+    #btn-novaFicha{
+        margin: 0;
+    }
+
+
+/* CONTEÚDO PRINCIPAL */
+
+.tela{
+    display:none ;
+}
+.ativa{
+    display: flex;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
