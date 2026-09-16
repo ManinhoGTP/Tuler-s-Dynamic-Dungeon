@@ -2,9 +2,11 @@
 
     :root {
         --Cor-background-escuro: #151515;
-        --Cor-background: #181818;
+        --Cor-background: #202020;
+        --Cor-background-claro: #252525;
 
-        --Cor-destaque: #8b0000;
+        --Cor-destaque: #B30000;
+        --Cor-destaque-complementar: #069C3F;
     }
 
 /* Variaveis*/
@@ -58,9 +60,61 @@
 
 
 /* CONTEÚDO PRINCIPAL */
-
+    /* Botão criar nova ficha */
     #btn-novaFicha{
-        margin: 0;
+        margin: 20px;
+        border-radius: 2px;
+        padding: 12.5px;
+        background-color: var(--Cor-destaque);
+        border: 0px;
+    }
+    #btn-novaFicha:hover{
+        cursor: pointer;
+        transition: 0.2s;
+        scale: 1.2;
+    }
+
+    /* Fichas */
+    #div-fichas{
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    #agente-container{
+        margin-left: 20px;
+        border-style: solid;
+        border-color: var(--Cor-destaque);
+        border-radius: 5px;
+        background-color: var(--Cor-background-claro);
+
+        display: grid;
+        grid-template-columns: 170px 1fr 0.5fr;
+
+        #agente-img{
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+        }
+        #agente-nome{
+            font-size: 30px;
+            margin-top: 10px;
+        }
+        #agente-classe{
+            font-size: 25px;
+            margin-top: 10px;
+        }
+        button{
+            max-height: 20%;
+            max-width: 90%;
+            margin-top: 90%;
+        }
+        button:hover{
+            cursor: pointer;
+            transition: 0.2s;
+            scale: 1.1;
+        }
     }
 
 /* CONTEÚDO PRINCIPAL */
@@ -79,6 +133,7 @@
     body{
         display: grid;
         grid-template-rows: 149px 1fr 100px;
+        background-color: var(--Cor-background);
     }
 
 /* Nada Aqui */
