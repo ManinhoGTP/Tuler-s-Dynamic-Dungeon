@@ -1,5 +1,8 @@
+
+
 function PaginaInicial(){
-    return null
+    return <>
+    </>
 }
 
 export default PaginaInicial;
