@@ -1,0 +1,16 @@
+.BotaoCustomizado_root{
+    border-radius: 2px;
+}
+.BotaoCustomizado_root:hover{
+    cursor: pointer;
+    transition: 0.2s;
+    scale: 1.1;
+}
+
+.BotaoCustomizado_primario{
+    background-color: #9C0E06;
+    border: 1px;
+    padding: 8px;
+    color: white;
+    margin: 16px;
+}

@@ -9,11 +9,12 @@ body,
 #root {
     height: 100%;
     font-family: 'Roboto', sans-serif;
+    background-color: var(--cor-fundo-principal);
 }
 
 #root {
     display: grid;
-    grid-template-rows: 48px 1fr 48px;
+    grid-template-rows: 1fr 48px;
 }
 
 a {
@@ -23,4 +24,9 @@ a {
 
 :root {
     --cor-primaria-clara: #7986cb;
+
+    --cor-borda: #7A7A7A;
+
+    --cor-fundo-principal: #191919;
+    --cor-fundo-alternativo: #151515;
 }

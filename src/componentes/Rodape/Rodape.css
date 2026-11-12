@@ -1,0 +1,14 @@
+.Rodape_root{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--cor-fundo-alternativo);
+    border-top: 1px solid var(--cor-borda);
+}
+.iconeComTexto{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+}

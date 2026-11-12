@@ -7,7 +7,6 @@ import Roteador from './Roteador';
 
 function App() {
   return <>
-    <Cabecalho />
     <Roteador/>
     <Rodape />
   </>;

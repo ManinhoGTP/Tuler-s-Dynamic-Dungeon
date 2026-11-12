@@ -1,0 +1,20 @@
+.Principal_root{
+    background-color: var(--cor-fundo-principal);
+    color: white;
+}
+.Principal_titulo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    margin: 16px;
+}
+
+:root {
+    --cor-primaria-clara: #7986cb;
+
+    --cor-borda: #7A7A7A;
+
+    --cor-fundo-principal: #191919;
+    --cor-fundo-alternativo: #151515;
+}
