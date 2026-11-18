@@ -4,3 +4,20 @@
     justify-content: center;
     color: gray;
 }
+
+/* Fichas */
+.div_listaDeFichas{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+    gap: 16px;
+}
+
+.div_fichaContainer{
+    border: 1px solid gray;
+    padding: 8px;
+}.div_fichaContainer:hover{
+    cursor: pointer;
+    transition: 0.2s;
+    scale: 1.05;
+}

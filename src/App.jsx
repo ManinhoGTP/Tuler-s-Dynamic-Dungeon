@@ -8,7 +8,6 @@ import Roteador from './Roteador';
 function App() {
   return <>
     <Roteador/>
-    <Rodape />
   </>;
 }
 

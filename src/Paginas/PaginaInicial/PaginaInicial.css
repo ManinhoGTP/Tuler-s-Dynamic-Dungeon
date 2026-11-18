@@ -1,0 +1,13 @@
+.titulo_PaginaInicial{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    text-align: center;
+    padding-top: 32px;
+    gap: 16px;
+}
+p{
+    opacity: 90%;
+    color: gray;
+}

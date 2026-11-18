@@ -14,7 +14,7 @@ body,
 
 #root {
     display: grid;
-    grid-template-rows: 1fr 48px;
+    grid-template-rows: 1fr 60px;
 }
 
 a {
