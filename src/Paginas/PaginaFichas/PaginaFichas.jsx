@@ -1,13 +1,15 @@
-import { useState, useEffect  } from "react";
-import Principal from "../../componentes/Principal/Principal";
 import "./PaginaFichas.css"
-import { buscarNoLocalStorage, salvarNoLocalStorage} from "../../servicos/localStorage.servico"
+import Principal from "../../componentes/Principal/Principal";
 import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizado";
+
+import { useState, useEffect  } from "react";
+import { buscarNoLocalStorage, salvarNoLocalStorage} from "../../servicos/localStorage.servico"
 import { useNavigate } from "react-router-dom";
+import { FaTrashAlt } from "react-icons/fa";
 
 
 function PaginaFichas(){
-    const [fichas, setFichas] = useState(() => buscarNoLocalStorage("fichas"));
+    const [fichas, setFichas] = useState(() => buscarNoLocalStorage("fichas") || []);
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -16,8 +18,12 @@ function PaginaFichas(){
 
     function AdicionarFicha(){
         const novaFicha = {
-            id: 2,
-            nome: "Gabriel"
+            id: Date.now(),
+            nome: "Nome do personagem",
+            idade: 18,
+            barra1Nome: "",
+            barra1: 0,
+            barra1Max: 20,
         }
         setFichas([...fichas, novaFicha]);
     }
@@ -29,8 +35,14 @@ function PaginaFichas(){
         <div className="div_listaDeFichas">
             {fichas.map((ficha, index) => {
                 return (
-                    <div className="div_fichaContainer" key={index} onClick={() => navigate(`/ficha/${ficha.id}`)}>
-                        <h4>{ficha.nome}</h4>
+                    <div className="div_fichaContainer" key={index} >
+                        <div>
+                            <h4>{ficha.nome}</h4>
+                            <h5>{ficha.idade}</h5>
+                        </div>
+                        <div>
+                            <BotaoCustomizado aoClicar={() => navigate(`/ficha/${ficha.id}`)}>Acessar ficha</BotaoCustomizado>
+                        </div>
                     </div>
                 )
             })}

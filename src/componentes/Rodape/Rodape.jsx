@@ -12,7 +12,7 @@ function Rodape(){
         <div>
             <Link to="/" className="iconeComTexto">
                 <FaHome />
-                <h5>HOME</h5>
+                <h5>inicio</h5>
             </Link>
         </div>
 

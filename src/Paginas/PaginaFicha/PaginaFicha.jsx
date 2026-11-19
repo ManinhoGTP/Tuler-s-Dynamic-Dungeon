@@ -2,14 +2,19 @@ import { useParams } from "react-router-dom";
 import Principal from "../../componentes/Principal/Principal";
 import { useEffect, useState } from "react";
 import { buscarNoLocalStorage, salvarNoLocalStorage} from "../../servicos/localStorage.servico"
+import BarraCustomizada from "../../componentes/BarraCustomizada/BarraCustomizada";
 
 
 
 function PaginaFicha(){
 
     const [ficha, setFicha] = useState({
-        nome: "",
         id: 0,
+        nome: "",
+        idade: 0,
+        barra1Nome: "",
+        barra1: 0,
+        barra1Max: 20,
     })
 
 
@@ -26,8 +31,13 @@ function PaginaFicha(){
     }, [params.id]);
 
     return <Principal voltarPara="/minhasFichas">
-        <h1>{ficha.nome}</h1>
-        <h1>teste</h1>
+        <main className="main_fichaDoPersonagem">
+            <div>
+                <h2>{ficha.nome}</h2>
+                <h2>{ficha.idade}</h2>
+            </div>
+            <BarraCustomizada titulo="teste"/>
+        </main>
     </Principal>
 }
 

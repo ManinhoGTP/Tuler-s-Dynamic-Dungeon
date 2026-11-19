@@ -13,11 +13,22 @@
     gap: 16px;
 }
 
+/* Container da ficha com as informações básicas */
 .div_fichaContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
     border: 1px solid gray;
+    border-radius: 4px;
     padding: 8px;
+
+    button{
+        background-color: red;
+        border: 0px solid;
+        border-radius: 6px;
+        padding: 3px;
+    }
 }.div_fichaContainer:hover{
-    cursor: pointer;
     transition: 0.2s;
     scale: 1.05;
 }
