@@ -32,6 +32,8 @@
     font-size: clamp(20px, 3.5vw, 18px);
     margin: 6px;
 }
+
+
 /* informações */
 .div_informacoes_label{
     display: flex;
@@ -45,30 +47,97 @@
         background-color: transparent;
         color: rgb(189, 0, 0);
         font-size: 20px;
-        rotate: 90deg;
-    }button:hover{
-        cursor: pointer;
-        transition: 0.2s;
-        scale: 1.3;
-    }
+
+        transform: rotate(90deg);
+        transition: transform 0.3s ease;
+        }button:hover{
+            cursor: pointer;
+            scale: 1.3;
+        }
 }
-.div_informacoes{
+.div_informacoes_label button.aberto {
+    transform: rotate(90deg);
+}
+
+.div_informacoes_label button.fechado {
+    transform: rotate(270deg);
+}
+
+.div_informacoes {
     display: flex;
     flex-direction: column;
 
     border: 1px solid white;
     border-radius: 6px;
+    margin: 5px;
+
+    overflow: hidden;
+
+    transition: max-height 0.3s ease;
 }
+
+.div_informacoes.aberto {
+    max-height: 1000px;
+}
+
+.div_informacoes.fechado {
+    max-height: 0;
+}
+
 .div_informacoes_campos{
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
 
-    input{
-        border: none;
+.div_informacoes_labelXtext{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 7px;
+    margin-top: 5px;
+    width: 100%;
+
+    label{
+        white-space: nowrap;
+        flex-shrink: 0;
+        margin-top: 3px;
+        margin-left: 5px;
+        margin-bottom: 15px;
+    }
+    textarea{
+        flex: 1;
+        min-width: 0;
+        resize: none;
+        font-family: inherit;
+        font-size: 14px;
+
         background-color: transparent;
-        border-bottom: 1px solid white;
+        border: none;
         color: white;
-        width: fit-content;
+        outline: none;
+
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
+
+        line-height: 22px;
+        background-image: linear-gradient(
+        to bottom,
+        transparent calc(100% - 1px),
+        white calc(100% - 1px)
+        );
+        background-size: 100% 22px;
+        background-repeat: repeat-y;
+
+        height: 28px;
+        min-height: 28px;
+        max-height: none;
+        padding: 0;
+        margin: 0;
+        margin-right: 8px;
+        box-sizing: border-box;
+        resize: none;
+        overflow: hidden;
     }
 }

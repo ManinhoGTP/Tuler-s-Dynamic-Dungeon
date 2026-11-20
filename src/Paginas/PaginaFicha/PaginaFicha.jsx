@@ -18,6 +18,8 @@ function PaginaFicha(){
         barras: [],
         informacoes: []
     })
+    //ficha colapsada
+    const [aberto, setAberto] = useState(true);
 
     // Parametros para a página
     const params = useParams();
@@ -101,15 +103,26 @@ function PaginaFicha(){
             <div>
                 <div className="div_informacoes_label">
                     <h2>Informações</h2>
-                    <button>{"<"}</button>
+                    <button className={aberto ? "aberto" : "fechado"} onClick={() => setAberto(!aberto)}>{"<"}</button>
                 </div>
-                <div className="div_informacoes">
+                <div className={`div_informacoes ${aberto ? "aberto" : "fechado"}`}>
                     <div className="div_informacoes_campos">
                         {ficha.informacoes.map((campo, index) => {
-                            return <div>
-                                <label>{campo.nomeDoCampo}: </label>
-                                <input type="text" value={campo.conteudo} readOnly/>
-                            </div>
+                            return (
+                                <div className="div_informacoes_labelXtext" key={index}>
+                                    <label>{campo.nomeDoCampo}:</label>
+
+                                    <textarea
+                                        rows={1}
+                                        onInput={(e) => {
+                                            e.currentTarget.style.height = "28px";
+                                            e.currentTarget.style.height =
+                                                e.currentTarget.scrollHeight + "px";
+                                        }}
+                                        defaultValue={campo.conteudo}
+                                    />
+                                </div>
+                            );
                         })}
                     </div>
                 </div>
