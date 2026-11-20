@@ -14,3 +14,11 @@
     color: white;
     margin: 16px;
 }
+.BotaoCustomizado_secundario{
+    background-color: #121212;
+    border: 1px darkred solid;
+    border-radius: 8px;
+    padding: 6px;
+    color: white;
+    margin: 16px;
+}

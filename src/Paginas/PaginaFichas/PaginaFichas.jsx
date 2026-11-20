@@ -21,9 +21,8 @@ function PaginaFichas(){
             id: Date.now(),
             nome: "Nome do personagem",
             idade: 18,
-            barra1Nome: "",
-            barra1: 0,
-            barra1Max: 20,
+            barras: [{nome: "vida", valor: 10, valorMax: 20, cor: "red" }, {nome: "mana", valor: 5, valorMax: 50, cor: "blue" }],
+            informacoes: [{nomeDoCampo: "Nome do personagem", conteudo: "Gabriel"}, {nomeDoCampo: "Idade", conteudo: "18"}]
         }
         setFichas([...fichas, novaFicha]);
     }
