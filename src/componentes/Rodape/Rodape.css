@@ -2,6 +2,11 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    width: 100%;
+    padding: 10px;
+
+    position: fixed;
+    bottom: 0;
 
     background-color: var(--cor-fundo-alternativo);
     border-top: 1px solid var(--cor-borda);

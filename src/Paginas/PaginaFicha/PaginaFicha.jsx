@@ -7,6 +7,7 @@ import defaultPfp from "../../assets/defaultPfp.jpg"
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { buscarNoLocalStorage, salvarNoLocalStorage} from "../../servicos/localStorage.servico"
+import { FaTrashAlt } from "react-icons/fa";
 
 
 function PaginaFicha(){
@@ -22,6 +23,7 @@ function PaginaFicha(){
     const [aberto, setAberto] = useState(true);
 
     // Parametros para a página
+    const [fichaCarregada, setFichaCarregada] = useState(false);
     const params = useParams();
         useEffect(() => {
             if(params.id) {
@@ -32,7 +34,22 @@ function PaginaFicha(){
                     setFicha(fichaParaEditar);
                 }
             }
+        setFichaCarregada(true);
     }, [params.id]);
+
+    //Salvar alterações no localStorage
+    useEffect(() => {
+    if (!fichaCarregada || !ficha.id) return;
+
+    const fichas = buscarNoLocalStorage("fichas") || [];
+
+    const fichasAtualizadas = fichas.map((item) =>
+        item.id === ficha.id ? ficha : item
+    );
+
+    salvarNoLocalStorage("fichas", fichasAtualizadas);
+
+}, [ficha, fichaCarregada]);
 
     // Função para mudar o valor das barras
     function alterarValorBarra(index, quantidade) {
@@ -75,6 +92,55 @@ function PaginaFicha(){
         return fichaAtualizada;
     });
     }
+    // Função para mudar o valor do textarea
+    function alterarInformacao(index, novoConteudo) {
+    setFicha((fichaAtual) => ({
+        ...fichaAtual,
+        informacoes: fichaAtual.informacoes.map((campo, i) => {
+            if (i === index) {
+                return {
+                    ...campo,
+                    conteudo: novoConteudo
+                };
+            }
+
+            return campo;
+        })
+    }));
+    }
+    let [modoEditando, setModoEditando] = useState(false)
+    function ativarEdicao(){
+        if(!modoEditando){
+            setModoEditando(true)
+        } else{
+            setModoEditando(false)
+        }
+    }
+
+    // criar nova barra de status
+    function novaBarra() {
+        const nome = prompt("Nome da barra:");
+        const valorMax = prompt("Valor maximo da barra");
+        const cor = prompt("Cor da barra em ingles");
+
+        if (!nome) return;
+
+        setFicha({...ficha, barras: [...ficha.barras,{ nome: nome, valor: 0, valorMax: valorMax, cor: cor}]});
+    }
+    // criar nova informacao
+    function novaInformacao(){
+        const nomeDoCampo = prompt("Nome do campo a ser adicionado:")
+        setFicha({...ficha, informacoes: [...ficha.informacoes, {nomeDoCampo: nomeDoCampo, conteudo: ""}]})
+    }
+
+    function removerBarra(index){
+        setFicha((fichaAtual) => ({...fichaAtual, barras: fichaAtual.barras.filter((barra, i) => i !== index)}))
+    }
+    function removerTextarea(index){
+        setFicha((fichaAtual) => ({...fichaAtual, informacoes: fichaAtual.informacoes.filter((barra, i) => i !== index)}))
+    }
+
+    
 
     // Ficha em si
     return <Principal voltarPara="/minhasFichas">
@@ -83,7 +149,7 @@ function PaginaFicha(){
             {/* foto de perfil e botão de editar */}
             <div className="div_topo">
                 <img src={defaultPfp} className="imagemPadrao"/>
-                <BotaoCustomizado tipo="secundario" className="teste">Editar</BotaoCustomizado>
+                <BotaoCustomizado tipo="secundario" className="teste" aoClicar={() => ativarEdicao()}>Editar</BotaoCustomizado>
             </div>
             
             {/* Barras de status */}
@@ -94,9 +160,13 @@ function PaginaFicha(){
                             <label>{barra.nome}</label>
                             <BarraCustomizada key={index} valor={barra.valor} valorMax={barra.valorMax} cor={barra.cor}
                             alterarValor={(quantidade) => alterarValorBarra(index, quantidade)} />
+                            {modoEditando ? (<FaTrashAlt onClick={() => removerBarra(index)} style={{color: "red"}}/>) : (null)}
                         </div>
                     )
                 })}
+
+                {modoEditando ? (<BotaoCustomizado aoClicar={() => novaBarra()} tipo="secundario">Nova barra de status</BotaoCustomizado>) : (null)}
+
             </div>
 
             {/* informações */}
@@ -116,18 +186,21 @@ function PaginaFicha(){
                                         rows={1}
                                         onInput={(e) => {
                                             e.currentTarget.style.height = "28px";
-                                            e.currentTarget.style.height =
-                                                e.currentTarget.scrollHeight + "px";
+                                            e.currentTarget.style.height = e.currentTarget.scrollHeight + "px";
                                         }}
-                                        defaultValue={campo.conteudo}
+                                        value={campo.conteudo} onChange={(e) => alterarInformacao(index, e.target.value)}
                                     />
+                                    {modoEditando ? (<FaTrashAlt onClick={() => removerTextarea(index)} style={{color: "red"}}/>) : (null)}
                                 </div>
                             );
+
                         })}
+                        {modoEditando ? (<BotaoCustomizado aoClicar={() => novaInformacao()} tipo="secundario">Adicionar nova informação</BotaoCustomizado>) : (null)}
                     </div>
                 </div>
             </div>
         </main>
+        {modoEditando ? (<div className="modoEdicao">Voçê está no modo edição</div>) : (null)}
     </Principal>
 }
 

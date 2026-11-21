@@ -141,3 +141,22 @@
         overflow: hidden;
     }
 }
+
+
+
+
+
+.modoEdicao{
+    position: fixed;
+    display: flex;
+    bottom: 66px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: rgba(109, 109, 109, 0.274);
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
