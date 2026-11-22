@@ -16,11 +16,12 @@
 /* Container da ficha com as informações básicas */
 .div_fichaContainer{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    padding: 10px;
+    gap: 16px;
 
     border: 1px solid gray;
     border-radius: 4px;
-    padding: 8px;
 
     button{
         background-color: red;

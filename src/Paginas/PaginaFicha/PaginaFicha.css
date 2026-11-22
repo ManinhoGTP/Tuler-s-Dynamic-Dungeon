@@ -36,7 +36,7 @@
     grid-template-columns: 1fr;
     gap: 10px;
     text-align: center;
-    font-size: clamp(20px, 3.5vw, 18px);
+    font-size: clamp(14px, 3.5vw, 20px);
     margin: 6px;
 }
 

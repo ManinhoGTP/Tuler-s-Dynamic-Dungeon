@@ -10,12 +10,6 @@ export default defineConfig({
       devOptions: {
         enabled: true,
       },
-      includeAssets: [  
-        'favicon.svg',
-        'favicon.ico',
-        'robots.txt',
-        'apple-touch-icon.png',
-      ],
      manifest: {
        name: "Tuler's Dynamic Dungeon",
        short_name: 'TDD',
