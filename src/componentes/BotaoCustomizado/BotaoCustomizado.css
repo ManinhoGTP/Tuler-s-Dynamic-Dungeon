@@ -21,4 +21,7 @@
     padding: 6px;
     color: white;
     margin: 16px;
+
+    width: auto;
+    min-height: fit-content;
 }

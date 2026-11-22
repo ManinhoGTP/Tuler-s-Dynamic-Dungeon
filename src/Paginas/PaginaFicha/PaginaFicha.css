@@ -4,23 +4,30 @@
 }
 
 .div_topo{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 124px 1fr 100px;
     justify-content: space-between;
-    align-items: end;
+    align-items: center;
 
     button{
         max-height: 30px;
         min-width: 50px;
         font-size: 16px;
     }
+    .div_titulo{
+        display: flex;
+        flex-direction: column;
+        align-self: start;
+        margin-top: 12px;
+        gap: 20px;
+    }
 }
 .imagemPadrao{
-    min-width: 125px;
-    min-width: 125px;
-    max-height: 125px;
-    max-height: 125px;
-    margin: 16px;
+    min-width: 100px;
+    min-width: 100px;
+    max-height: 100px;
+    max-height: 100px;
+    margin: 12px;
 }
 
 /* Barras de status */
@@ -149,7 +156,7 @@
 .modoEdicao{
     position: fixed;
     display: flex;
-    bottom: 66px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
 
@@ -159,4 +166,6 @@
     text-align: center;
     justify-content: center;
     align-items: center;
+
+    pointer-events: none;
 }

@@ -117,7 +117,7 @@ function PaginaFicha(){
         }
     }
 
-    // criar nova barra de status
+    // criar ou deleta uma barra de status
     function novaBarra() {
         const nome = prompt("Nome da barra:");
         const valorMax = prompt("Valor maximo da barra");
@@ -127,15 +127,18 @@ function PaginaFicha(){
 
         setFicha({...ficha, barras: [...ficha.barras,{ nome: nome, valor: 0, valorMax: valorMax, cor: cor}]});
     }
-    // criar nova informacao
+
+    function removerBarra(index){
+        setFicha((fichaAtual) => ({...fichaAtual, barras: fichaAtual.barras.filter((barra, i) => i !== index)}))
+    }
+
+    // criar ou deleta uma informacao
     function novaInformacao(){
         const nomeDoCampo = prompt("Nome do campo a ser adicionado:")
         setFicha({...ficha, informacoes: [...ficha.informacoes, {nomeDoCampo: nomeDoCampo, conteudo: ""}]})
     }
 
-    function removerBarra(index){
-        setFicha((fichaAtual) => ({...fichaAtual, barras: fichaAtual.barras.filter((barra, i) => i !== index)}))
-    }
+    
     function removerTextarea(index){
         setFicha((fichaAtual) => ({...fichaAtual, informacoes: fichaAtual.informacoes.filter((barra, i) => i !== index)}))
     }
@@ -148,8 +151,20 @@ function PaginaFicha(){
 
             {/* foto de perfil e botão de editar */}
             <div className="div_topo">
-                <img src={defaultPfp} className="imagemPadrao"/>
-                <BotaoCustomizado tipo="secundario" className="teste" aoClicar={() => ativarEdicao()}>Editar</BotaoCustomizado>
+                <div>
+                    <img src={defaultPfp} className="imagemPadrao"/>
+                </div>
+                <div  className="div_titulo">
+                    <h2 contentEditable={modoEditando} onBlur={(e) => {const novoNome = e.currentTarget.textContent;
+                        setFicha((fichaAtual) => ({...fichaAtual, nome: novoNome}));
+                    }}>{ficha.nome}</h2>
+                    <h2 contentEditable={modoEditando} onBlur={(e) => {const novaIdade = e.currentTarget.textContent;
+                        setFicha((fichaAtual) => ({...fichaAtual, idade: novaIdade}));
+                    }}>{ficha.idade}</h2>
+                </div>
+                <div>
+                    <BotaoCustomizado tipo="secundario" className="btn_editar" aoClicar={() => ativarEdicao()}>{modoEditando ? "Concluir edição" : "Editar"}</BotaoCustomizado>
+                </div>
             </div>
             
             {/* Barras de status */}
