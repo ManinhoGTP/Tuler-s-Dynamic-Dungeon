@@ -6,13 +6,16 @@ export default defineConfig({
  plugins: [
    react(),
    VitePWA({
-     registerType: 'autoUpdate',
-     includeAssets: [
-       'favicon.svg',
-       'favicon.ico',
-       'robots.txt',
-       'apple-touch-icon.png',
-     ],
+      registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true,
+      },
+      includeAssets: [  
+        'favicon.svg',
+        'favicon.ico',
+        'robots.txt',
+        'apple-touch-icon.png',
+      ],
      manifest: {
        name: "Tuler's Dynamic Dungeon",
        short_name: 'TDD',
@@ -22,12 +25,12 @@ export default defineConfig({
        display: 'standalone',
        icons: [
          {
-           src: 'icons/icon-192x192',
+           src: 'icons/android-chrome-192x192.png',
            sizes: '192x192',
            type: 'image/png',
          },
          {
-           src: 'icons/icon-512x512',
+           src: 'icons/android-chrome-512x512.png',
            sizes: '512x512',
            type: 'image/png',
          },
