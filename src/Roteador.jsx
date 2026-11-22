@@ -10,10 +10,7 @@ function Layout() {
   return (
     <>
       <Outlet />
-
-      <div className="container_rodape">
-        <Rodape />
-      </div>
+      <Rodape />
     </>
   );
 }
