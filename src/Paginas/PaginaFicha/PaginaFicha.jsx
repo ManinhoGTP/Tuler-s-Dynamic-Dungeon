@@ -145,10 +145,10 @@ function PaginaFicha(){
     // cria ou deleta uma barra de status
     function novaBarra() {
         const nome = prompt("Nome da barra:");
+        
         const valorMax = prompt("Valor maximo da barra");
         const cor = prompt("Cor da barra em ingles");
 
-        if (!nome) return;
 
         setFicha({...ficha, barras: [...ficha.barras,{ nome: nome, valor: 0, valorMax: valorMax, cor: cor}]});
     }
@@ -159,6 +159,7 @@ function PaginaFicha(){
     // cria ou deleta uma informacao
     function novaInformacao(){
         const nomeDoCampo = prompt("Nome do campo a ser adicionado:")
+        if (!nomeDoCampo) {return};
         setFicha({...ficha, informacoes: [...ficha.informacoes, {nomeDoCampo: nomeDoCampo, conteudo: ""}]})
     }
     function removerTextarea(index){
@@ -168,6 +169,7 @@ function PaginaFicha(){
     // Cria ou deleta um atributo
     function novoAtributo() {
         const nomeDoAtributo = prompt("Nome do atributo:");
+        if (!nomeDoAtributo) {return};
         const Abreviacao = prompt("Abreviação do nome (exemplo: abreviação de Força é For");
         const valor = prompt("Valor inicial do atributo");
 
