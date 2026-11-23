@@ -161,13 +161,19 @@ function PaginaFicha(){
                 <div>
                     <img src={defaultPfp} className="imagemPadrao"/>
                 </div>
-                <div  className="div_titulo">
-                    <h2 contentEditable={modoEditando} onBlur={(e) => {const novoNome = e.currentTarget.textContent;
-                        setFicha((fichaAtual) => ({...fichaAtual, nome: novoNome}));
-                    }}>{ficha.nome}</h2>
-                    <h2 contentEditable={modoEditando} onBlur={(e) => {const novaIdade = e.currentTarget.textContent;
-                        setFicha((fichaAtual) => ({...fichaAtual, idade: novaIdade}));
-                    }}>{ficha.idade}</h2>
+                <div className="div_titulo">
+                    <div className="div_titulo_labelComInfo">
+                        <p>Nome: </p>
+                        <h2 contentEditable={modoEditando} onBlur={(e) => {const novoNome = e.currentTarget.textContent;
+                            setFicha((fichaAtual) => ({...fichaAtual, nome: novoNome}));
+                        }}>{ficha.nome}</h2>
+                    </div>
+                    <div className="div_titulo_labelComInfo">
+                        <p>Idade:</p>
+                        <h2 contentEditable={modoEditando} onBlur={(e) => {const novaIdade = e.currentTarget.textContent;
+                            setFicha((fichaAtual) => ({...fichaAtual, idade: novaIdade}));
+                        }}>{ficha.idade}</h2>
+                    </div>
                 </div>
                 <div>
                     <BotaoCustomizado tipo="secundario" className="btn_editar" aoClicar={() => ativarEdicao()}>{modoEditando ? "Concluir edição" : "Editar"}</BotaoCustomizado>
