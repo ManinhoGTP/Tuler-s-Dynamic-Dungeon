@@ -53,7 +53,7 @@ function PaginaFicha(){
 
 }, [ficha, fichaCarregada]);
 
-    // Função para mudar o valor de partes da ficha
+    // Funções para mudar o valor de partes da ficha
     function alterarValorBarra(index, quantidade) {
     setFicha((fichaAtual) => {
         const fichaAtualizada = {
@@ -116,7 +116,6 @@ function PaginaFicha(){
         })
     }));
     }
-    // Função para mudar o valor do textarea
     function alterarAtributo(index, novoConteudo) {
     setFicha((fichaAtual) => ({
         ...fichaAtual,
@@ -133,6 +132,7 @@ function PaginaFicha(){
     }));
     }
 
+    // Modo de editção
     let [modoEditando, setModoEditando] = useState(false)
     function ativarEdicao(){
         if(!modoEditando){
@@ -152,7 +152,6 @@ function PaginaFicha(){
 
         setFicha({...ficha, barras: [...ficha.barras,{ nome: nome, valor: 0, valorMax: valorMax, cor: cor}]});
     }
-
     function removerBarra(index){
         setFicha((fichaAtual) => ({...fichaAtual, barras: fichaAtual.barras.filter((barra, i) => i !== index)}))
     }
@@ -162,7 +161,6 @@ function PaginaFicha(){
         const nomeDoCampo = prompt("Nome do campo a ser adicionado:")
         setFicha({...ficha, informacoes: [...ficha.informacoes, {nomeDoCampo: nomeDoCampo, conteudo: ""}]})
     }
-
     function removerTextarea(index){
         setFicha((fichaAtual) => ({...fichaAtual, informacoes: fichaAtual.informacoes.filter((barra, i) => i !== index)}))
     }
@@ -177,7 +175,6 @@ function PaginaFicha(){
 
         setFicha({...ficha, atributos: [...ficha.atributos,{ nomeDoAtributo: nomeDoAtributo, valor: valor, Abreviacao: Abreviacao}]});
     }
-
     function removerAtributo(index){
         setFicha((fichaAtual) => ({...fichaAtual, atributos: fichaAtual.atributos.filter((atributo, i) => i !== index)}))
     }
@@ -282,7 +279,7 @@ function PaginaFicha(){
                                 </div>
                             )
                         })}
-                        {modoEditando ? (<BotaoCustomizado aoClicar={() => novoAtributo()} tipo="secundario">Adicionar nova informação</BotaoCustomizado>) : (null)}
+                        {modoEditando ? (<BotaoCustomizado aoClicar={() => novoAtributo()} tipo="secundario">Adicionar um novo atributo</BotaoCustomizado>) : (null)}
                     </div>
                 </div>
             </div>
