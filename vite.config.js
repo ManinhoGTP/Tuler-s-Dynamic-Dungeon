@@ -14,8 +14,8 @@ export default defineConfig({
        name: "Tuler's Dynamic Dungeon",
        short_name: 'TDD',
        description: 'Aplicativo de criação e gerenciamento de fichas de rpg',
-       theme_color: '#a00202ff',
-       background_color: '#181818',
+       theme_color: '#191919',
+       background_color: '#191919',
        display: 'standalone',
        icons: [
          {
