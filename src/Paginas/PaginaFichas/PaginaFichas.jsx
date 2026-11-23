@@ -22,7 +22,8 @@ function PaginaFichas(){
             nome: "Nome do personagem",
             idade: 18,
             barras: [{nome: "vida", valor: 10, valorMax: 20, cor: "red" }, {nome: "mana", valor: 5, valorMax: 50, cor: "blue" }],
-            informacoes: [{nomeDoCampo: "história", conteudo: "Ele nasceu em 2009"}]
+            informacoes: [{nomeDoCampo: "história", conteudo: "Ele nasceu em 2009"}],
+            atributos: [{nomeDoAtributo: "Força", Abreviacao: "For", valor: 5}, {nomeDoAtributo: "Agilidade", Abreviacao: "Agi", valor: 6}]
         }
         setFichas([...fichas, novaFicha]);
     }

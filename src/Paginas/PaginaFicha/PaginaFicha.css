@@ -1,6 +1,8 @@
 .main_fichaDoPersonagem{
     display: flex;
     flex-direction: column;
+
+    margin-bottom: 20%;
 }
 
 .div_topo{
@@ -154,9 +156,55 @@
     }
 }
 
+/* Atributos */
+/* div total do atributo */
+.div_atributos_campos{
+    display: flex;
+    flex-direction: column;
+}
+/* div principal nomes com valor */
+.div_atributo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 6px;
+    align-items: center;
+    border-left: 3px solid white;
 
+    background-color: rgb(41, 41, 41);
+}
+/* div do nome do atributo com a abreviacao */
+.div_atributoLabel{
+    display: flex;
+    flex-direction: column;
+    margin-left: 7.5%;
 
+    /* Nome do atributo */
+    label{
+        font-size: larger;
+    }
+}
+/* Valor do atributo (número) */
+.div_atributoValor{
+    display: flex;
+    margin-right: 5%;
+    border: 1px white solid;
+    background-color: black;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 4px;
+    margin-right: 10px;
+    width: 45px;
+    align-items: center;
+    justify-content: center;
 
+    /* Valor numérico do atributo */
+    h4{
+        font-size: larger;
+        
+    }
+}
 
 .modoEdicao{
     position: fixed;

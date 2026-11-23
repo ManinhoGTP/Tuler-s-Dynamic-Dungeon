@@ -17,10 +17,12 @@ function PaginaFicha(){
         nome: "",
         idade: 0,
         barras: [],
-        informacoes: []
+        informacoes: [],
+        atributos: []
     })
     //ficha colapsada
     const [aberto, setAberto] = useState(true);
+    const [abertoAtributo, setAbertoAtributo] = useState(true);
 
     // Parametros para a página
     const [fichaCarregada, setFichaCarregada] = useState(false);
@@ -51,7 +53,7 @@ function PaginaFicha(){
 
 }, [ficha, fichaCarregada]);
 
-    // Função para mudar o valor das barras
+    // Função para mudar o valor de partes da ficha
     function alterarValorBarra(index, quantidade) {
     setFicha((fichaAtual) => {
         const fichaAtualizada = {
@@ -99,7 +101,6 @@ function PaginaFicha(){
         return fichaAtualizada;
     });
     }
-    // Função para mudar o valor do textarea
     function alterarInformacao(index, novoConteudo) {
     setFicha((fichaAtual) => ({
         ...fichaAtual,
@@ -115,6 +116,23 @@ function PaginaFicha(){
         })
     }));
     }
+    // Função para mudar o valor do textarea
+    function alterarAtributo(index, novoConteudo) {
+    setFicha((fichaAtual) => ({
+        ...fichaAtual,
+        atributos: fichaAtual.atributos.map((atributo, i) => {
+            if (i === index) {
+                return {
+                    ...atributo,
+                    valor: novoConteudo
+                };
+            }
+
+            return atributo;
+        })
+    }));
+    }
+
     let [modoEditando, setModoEditando] = useState(false)
     function ativarEdicao(){
         if(!modoEditando){
@@ -124,7 +142,7 @@ function PaginaFicha(){
         }
     }
 
-    // criar ou deleta uma barra de status
+    // cria ou deleta uma barra de status
     function novaBarra() {
         const nome = prompt("Nome da barra:");
         const valorMax = prompt("Valor maximo da barra");
@@ -139,18 +157,30 @@ function PaginaFicha(){
         setFicha((fichaAtual) => ({...fichaAtual, barras: fichaAtual.barras.filter((barra, i) => i !== index)}))
     }
 
-    // criar ou deleta uma informacao
+    // cria ou deleta uma informacao
     function novaInformacao(){
         const nomeDoCampo = prompt("Nome do campo a ser adicionado:")
         setFicha({...ficha, informacoes: [...ficha.informacoes, {nomeDoCampo: nomeDoCampo, conteudo: ""}]})
     }
 
-    
     function removerTextarea(index){
         setFicha((fichaAtual) => ({...fichaAtual, informacoes: fichaAtual.informacoes.filter((barra, i) => i !== index)}))
     }
 
-    
+    // Cria ou deleta um atributo
+    function novoAtributo() {
+        const nomeDoAtributo = prompt("Nome do atributo:");
+        const Abreviacao = prompt("Abreviação do nome (exemplo: abreviação de Força é For");
+        const valor = prompt("Valor inicial do atributo");
+
+        if (!nomeDoAtributo) return;
+
+        setFicha({...ficha, atributos: [...ficha.atributos,{ nomeDoAtributo: nomeDoAtributo, valor: valor, Abreviacao: Abreviacao}]});
+    }
+
+    function removerAtributo(index){
+        setFicha((fichaAtual) => ({...fichaAtual, atributos: fichaAtual.atributos.filter((atributo, i) => i !== index)}))
+    }
 
     // Ficha em si
     return <Principal voltarPara="/minhasFichas">
@@ -227,6 +257,37 @@ function PaginaFicha(){
                     </div>
                 </div>
             </div>
+
+            {/* Atributos */}
+            <div>
+                <div className="div_informacoes_label">
+                    <h2>Atributos</h2>
+                    <button className={abertoAtributo ? "aberto" : "fechado"} onClick={() => setAbertoAtributo(!abertoAtributo)}>{"<"}</button>
+                </div>
+                <div className={`div_informacoes ${abertoAtributo ? "aberto" : "fechado"}`}>
+                    <div className="div_atributos_campos">
+                        {ficha.atributos.map((atributo, index) => {
+                            return (
+                                <div>
+                                <div key={index} className="div_atributo">
+                                    <div className="div_atributoLabel">
+                                        <label>{atributo.nomeDoAtributo}</label>
+                                        <p>{atributo.Abreviacao}</p>
+                                    </div>
+                                    <div className="div_atributoValor">
+                                        <h4 value={atributo.valor} contentEditable={modoEditando} onBlur={(e) => alterarAtributo(index, e.currentTarget.textContent)}>{atributo.valor}</h4>
+                                    </div>
+                                    {modoEditando ? (<FaTrashAlt onClick={() => removerAtributo(index)} style={{color: "red"}}/>) : (null)}
+                                </div>
+                                </div>
+                            )
+                        })}
+                        {modoEditando ? (<BotaoCustomizado aoClicar={() => novoAtributo()} tipo="secundario">Adicionar nova informação</BotaoCustomizado>) : (null)}
+                    </div>
+                </div>
+            </div>
+
+
         </main>
         {modoEditando ? (<div className="modoEdicao">Voçê está no modo edição</div>) : (null)}
     </Principal>

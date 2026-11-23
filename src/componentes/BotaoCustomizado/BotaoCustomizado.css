@@ -4,7 +4,7 @@
 .BotaoCustomizado_root:hover{
     cursor: pointer;
     transition: 0.2s;
-    scale: 1.1;
+    scale: 1.05;
 }
 
 .BotaoCustomizado_primario{
