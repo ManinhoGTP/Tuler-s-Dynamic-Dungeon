@@ -57,7 +57,7 @@ function PaginaFicha(){
         const fichaAtualizada = {
             ...fichaAtual,
             barras: fichaAtual.barras.map((barra, i) => {
-                if (i === index) {
+                if (i === index && !modoEditando) {
                     return {
                         ...barra,
                         valor: Math.max(
@@ -66,6 +66,13 @@ function PaginaFicha(){
                                 barra.valor + quantidade,
                                 barra.valorMax
                             )
+                        )
+                    };
+                } else if(i === index && modoEditando) {
+                    return {
+                        ...barra,
+                        valorMax: Math.max(
+                            0, barra.valorMax + quantidade
                         )
                     };
                 }
