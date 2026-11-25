@@ -1,4 +1,4 @@
-.main_fichaDoPersonagem{
+.main_fichaDoPersonagem {
     display: flex;
     flex-direction: column;
 
@@ -7,7 +7,8 @@
 
 .div_topo{
     display: grid;
-    grid-template-columns: 124px 1fr 100px;
+    /* grid-template-columns: 95px 0.5fr 70px; */
+    grid-template-columns: 1fr 1fr 1fr; 
     justify-content: space-between;
     align-items: center;
 
@@ -27,6 +28,9 @@
         flex-direction: row;
         align-items: center;
         gap: 5px;
+    }
+    h3{
+        font-size: large;
     }
 }
 .imagemPadrao{
@@ -187,7 +191,6 @@
 /* Valor do atributo (número) */
 .div_atributoValor{
     display: flex;
-    margin-right: 5%;
     border: 1px white solid;
     background-color: black;
     padding: 10px;

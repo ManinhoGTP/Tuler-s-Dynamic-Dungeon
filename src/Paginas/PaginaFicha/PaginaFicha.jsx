@@ -193,9 +193,9 @@ function PaginaFicha(){
                 <div className="div_titulo">
                     <div className="div_titulo_labelComInfo">
                         <p>Nome: </p>
-                        <h2 contentEditable={modoEditando} onBlur={(e) => {const novoNome = e.currentTarget.textContent;
+                        <h3 contentEditable={modoEditando} onBlur={(e) => {const novoNome = e.currentTarget.textContent;
                             setFicha((fichaAtual) => ({...fichaAtual, nome: novoNome}));
-                        }}>{ficha.nome}</h2>
+                        }}>{ficha.nome}</h3>
                     </div>
                     <div className="div_titulo_labelComInfo">
                         <p>Idade:</p>
